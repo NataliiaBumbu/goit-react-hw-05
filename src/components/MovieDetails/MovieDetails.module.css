@@ -1,0 +1,26 @@
+.container{
+    padding: 0px;
+    background-color: #fff;
+};
+.wrapper {
+    display: flex;
+    gap: 5px;
+    padding:  0;
+    img {
+      width: 250px;
+    }
+};
+.title{
+    font-size: 34px;
+    font-weight: 700;
+    color: black;
+}
+.additional{
+        margin-left: 30px;
+        margin-top: 8px;
+        font-weight: 600;
+        list-style-type: none;
+        text-decoration: none;
+        padding: 0;
+      
+}
