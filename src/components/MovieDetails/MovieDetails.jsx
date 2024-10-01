@@ -47,44 +47,38 @@ const MovieDetails = () => {
       
   return (
     <section className={s.container}>
-    <NavLink to={backLinkRef.current}>Back</NavLink>
+  <NavLink to={backLinkRef.current}>Back</NavLink>
 
-    {status === 'rejected' && <p>{error}</p>}
+  {status === 'rejected' && <p>{error}</p>}
 
-    {status === 'resolved' && (
-      <div className={s.wrapper}>
-        <img src={urlImg} alt={title} />
-        <div>
-          <h1 className={title}>
-            {title} <span> ({date})</span>
-          </h1>
-          <p >User Score: {(vote_average * 10).toFixed(0)} %</p>
-          <h2 >Overview</h2>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <p>{genres.map(el => el.name).join(' / ')}</p>
-        </div>
+  {status === 'resolved' && (
+    <div className={s.wrapper}>
+      <img src={urlImg} alt={title} />
+      <div>
+        <h1 className={s.title}>
+          {title} <span>({date})</span>
+        </h1>
+        <p>User Score: {(vote_average * 10).toFixed(0)} %</p>
+        <h2 className={s.overview}>Overview</h2>
+        <p>{overview}</p>
+        <h3 className={s.genres}>Genres</h3>
+        <p>{genres.map(el => el.name).join(' / ')}</p>
       </div>
-    )}
+    </div>
+  )}
 
-{status === 'resolved' && (
-        <div>
-          <h4>Additional information</h4>
-          <ul className={s.additional}>
-            <li>
-              <Link to="cast">Cast</Link>
-            </li>
-            <li>
-              <Link to="reviews">Reviews</Link>
-            </li>
-          </ul>
-        </div>
-      )}
+  {status === 'resolved' && (
+    <div className={s.wrapperAdditional}>
+      
+      <h4 className={s.additional}>Additional information</h4>
+      <ul className={s.additional}>
+        <li><Link to="cast">Cast</Link></li>
+        <li><Link to="reviews">Reviews</Link></li>
+      </ul>
+    </div>
+  )}
+</section>
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
-      </Suspense>
-    </section>
   )
 }
 
