@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import s from './MovieCast.module.css';
 import { getCast } from '../../api/api';
 
-
+import picture from '../../icon/icon.png';
 const MovieCast = () => {
   const { id } = useParams();
   const [casts, setCasts] = useState([]);
@@ -18,7 +18,7 @@ const MovieCast = () => {
         const casts = data.cast;
 
         if (!casts.length) {
-          setError(`Перелік акторів відсутній :(`);
+          setError(`There is no cast list`);
           setStatus('rejected');
         }
         
@@ -52,7 +52,7 @@ const MovieCast = () => {
         } else {
           return (
             <li key={cast.id}>
-              <img src='https://en.wikipedia.org/wiki/React_Native#/media/File:React-icon.svg'/>
+              <img src={picture}/>
               <p>Name: {cast.name}</p>
               <p>Character: {cast.character}</p>
             </li>

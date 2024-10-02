@@ -25,7 +25,7 @@ const MovieList = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Trending today</h2>
 
-      {error && <p>Вибачте, але щось пішло не так</p>}
+      {error && <p>Sorry, but something went wrong</p>}
 
       <ul className={styles.listFilm}>
         {movies.map(movie => (

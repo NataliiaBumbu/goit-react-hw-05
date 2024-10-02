@@ -2,6 +2,7 @@ import { Suspense, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getDetailMovie } from '../../api/api';
 import s from './MovieDetails.module.css';
+import picture from '../../icon/icon.png';
 
 const MovieDetails = () => {
     const { id } = useParams();
@@ -14,6 +15,8 @@ const MovieDetails = () => {
     const [error, setError] = useState(null);
     const [status, setStatus] = useState('idle');
 
+   
+
     useEffect(() => {
         const fetchFilms = async () => {
           try {
@@ -22,10 +25,9 @@ const MovieDetails = () => {
             const date = film.release_date.split('-')[0]; 
             const url = film.poster_path
               ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
-              : 'https://en.wikipedia.org/wiki/React_Native#/media/File:React-icon.svg';
-    
+              : picture;
               if (film.length === 0) {
-                setError(`Інформація по фільму відсутня`);
+                setError(`There is no information on the film`);
                 setStatus('rejected');
               } else {
                 setGenres(genres);
@@ -47,7 +49,7 @@ const MovieDetails = () => {
       
   return (
     <section className={s.container}>
-  <NavLink to={backLinkRef.current}>Back</NavLink>
+  <NavLink to={backLinkRef.current}>Go Back</NavLink>
 
   {status === 'rejected' && <p>{error}</p>}
 
