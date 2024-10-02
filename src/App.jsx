@@ -1,36 +1,34 @@
+import { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
 
-import { Route, Routes } from 'react-router-dom'
-import './App.css'
+import Header from './components/Header/Header';
 
 
-import Header from './components/Header/Header'
-import MovieDetails from './components/MovieDetails/MovieDetails'
-import HomePage from './pages/HomePage/HomePage'
-import MoviesPage from './pages/MoviesPage/MoviesPage'
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
-
-import MovieReviews from './components/MovieReviews/MovieReviews'
-import MovieCast from './components/MovieCast/MovieCast'
-
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage'));
+const MovieDetails = lazy(() => import('./components/MovieDetails/MovieDetails'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
+const MovieCast = lazy(() => import('./components/MovieCast/MovieCast'));
+const MovieReviews = lazy(() => import('./components/MovieReviews/MovieReviews'));
 
 const App = () => {
   return (
     <>
-  
-				<Header />
+      <Header />
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/movies' element={<MoviesPage />} />
-        <Route path='*' element={<NotFoundPage />} />
-  <Route path="movies/:id" element={<MovieDetails />}>
-  <Route path="cast" element={<MovieCast />} />
-  <Route path="reviews" element={<MovieReviews />} />
-</Route>
-
-
+          <Route path='/' element={<HomePage />} />
+          <Route path='/movies' element={<MoviesPage />} />
+          <Route path='*' element={<NotFoundPage />} />
+          <Route path="movies/:id" element={<MovieDetails />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
         </Routes>
+      </Suspense>
     </>
- )
+  );
 }
 
-export default App
+export default App;
