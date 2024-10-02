@@ -4,11 +4,11 @@ import './App.css'
 
 
 import Header from './components/Header/Header'
-
-import NotFound from './components/NotFound/NotFound'
-import Home from './pages/home'
-import Movies from './pages/movies'
 import MovieDetails from './components/MovieDetails/MovieDetails'
+import HomePage from './pages/HomePage/HomePage'
+import MoviesPage from './pages/MoviesPage/MoviesPage'
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
+import MovieCast from './components/MovieCast/MovieCast'
 
 
 const App = () => {
@@ -17,10 +17,11 @@ const App = () => {
   
 				<Header />
         <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<Movies />} />
-        <Route path='*' element={<NotFound />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/about' element={<MoviesPage />} />
+        <Route path='*' element={<NotFoundPage />} />
         <Route path="movies/:id" element={<MovieDetails />}></Route>
+        <Route path="cast" element={<MovieCast />} />
         </Routes>
     </>
  )

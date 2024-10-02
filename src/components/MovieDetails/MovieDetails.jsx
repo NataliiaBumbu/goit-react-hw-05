@@ -24,7 +24,7 @@ const MovieDetails = () => {
               ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
               : 'https://en.wikipedia.org/wiki/React_Native#/media/File:React-icon.svg';
     
-              if (film === []) {
+              if (film.length === 0) {
                 setError(`Інформація по фільму відсутня`);
                 setStatus('rejected');
               } else {
@@ -78,6 +78,9 @@ const MovieDetails = () => {
       <hr />
     </div>
   )}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
 </section>
 
   )

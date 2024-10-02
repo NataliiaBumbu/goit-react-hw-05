@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-const NotFound = () => {
+const NotFoundPage = () => {
   return (
     <div>
       <Link to='/'>Home</Link>
     </div>
   );
 };
-export default NotFound;
+export default NotFoundPage;

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { getFilm } from "../api/api";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
-import s from './Movies.module.css';
 
-const Movies = () => {
+import { Link, useLocation, useSearchParams } from "react-router-dom";
+import s from './MoviesPage.module.css';
+import { getFilm } from "../../api/api";
+
+const MoviesPage = () => {
     const [searchFilm, setSearchFilm] = useSearchParams();
     const [films, setFilms] = useState([]);
     const [error, setError] = useState(null);
@@ -63,4 +64,4 @@ const Movies = () => {
     );
   };
   
-  export default Movies;
+  export default MoviesPage;
