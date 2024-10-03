@@ -1,20 +1,4 @@
 
-
-.container {
-    padding: 20px;
-    background-color: #fff;
-    text-align: left;
-}
- 
-
-
-.title {
-    margin-bottom: 20px;
-  font-size: 40px;
-  font-weight: 700;
-  color: black;  
-}
-
 .listFilm {
     display: flex;
     flex-direction: column;

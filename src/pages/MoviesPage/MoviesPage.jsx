@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
-import s from './MoviesPage.module.css';
+import { useLocation, useSearchParams } from "react-router-dom";
 import { getFilm } from "../../api/api";
 import { Formik, Form, Field } from "formik";
+import MovieList from '../../components/MovieList/MovieList';
+import s from './MoviesPage.module.css';
 
 const MoviesPage = () => {
   const [searchFilm, setSearchFilm] = useSearchParams();
@@ -60,22 +61,13 @@ const MoviesPage = () => {
             <button type="submit" disabled={isSubmitting}>
               Search
             </button>
-    
           </Form>
         )}
       </Formik>
 
       {status === 'rejected' && <p className="s.errorText">{error}</p>}
 
-      <ul className={s.listOfFilm}>
-        {films.map(film => (
-          <li key={film.id}>
-            <Link to={`${film.id}`} state={{ from: location }}>
-              {film.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={films} />
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import { Suspense, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getDetailMovie } from '../../api/api';
-import s from './MovieDetails.module.css';
+import s from './MovieDetailsPage.module.css';
 import picture from '../../icon/icon.png';
 
-const MovieDetails = () => {
+const MovieDetailsPage = () => {
     const { id } = useParams();
     const location = useLocation(); 
     const backLinkRef = useRef(location.state?.from ?? '/'); 
@@ -88,4 +88,4 @@ const MovieDetails = () => {
   )
 }
 
-export default MovieDetails
+export default MovieDetailsPage
